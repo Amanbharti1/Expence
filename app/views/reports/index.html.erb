@@ -1,7 +1,15 @@
-<h1>Expense Reports</h1>
 
-<h2>Expenses by Category</h2>
-<%= pie_chart @expenses_by_category %>
+
+<%  @q =  current_user.expenses.ransack(params[:q]) %>
+
+<div class="container">
+	<center><h1>Expense Reports</h1></center>
+
+
+<h2>Expenses by Day</h2>
+<%= column_chart current_user.expenses.group_by_day_of_week(:created_at, format: "%a").count %>
 
 <h2>Expenses by Month</h2>
-<%= line_chart @expenses_by_month %>
+<%= line_chart current_user.expenses.group_by_month(:date, last: 6, current: true).sum('expenses.amount') %>
+</div>
+

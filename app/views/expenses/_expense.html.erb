@@ -1,5 +1,5 @@
 <div class="col-md-4 mb-4">
-<div class="card h-100" style="width: 15rem;">
+<div class="card h-100" style="width: 17rem;">
 <% if expense.receipt.attached? %>
 <%= image_tag expense.receipt, size: "200x200",class:"card-img-top",style:"height:200px" %>
   <% else %>
@@ -13,7 +13,6 @@
     <p class="card-text"><%= expense.description %></p>
     </div>
     <%= link_to "Show this expense", expense ,class:"btn btn-primary" %>
-    
   </div>
   <div class="card-footer">
       <small class="text-muted"><%= expense.date %></small>

@@ -8,3 +8,6 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "react" # @18.3.1
 pin "react-dom" # @18.3.1
 pin "scheduler" # @0.23.2
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"
+

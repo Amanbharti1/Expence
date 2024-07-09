@@ -10,12 +10,18 @@ class Expense < ApplicationRecord
   validates :category, presence: true
 
   validate :receipt_size_validation
+  validate :date_cannot_be_in_the_future
 
   def self.ransackable_associations(auth_object = nil)
     ["category", "receipt_attachment", "receipt_blob", "user"]
   end
+  
   def self.ransackable_attributes(auth_object = nil)
     ["amount", "category_id", "created_at", "date", "description", "id", "id_value", "title", "updated_at", "user_id"]
+  end
+
+  def self.monthly_spending
+    group_by_month(:date, last: 12, current: true).sum('expenses.amount')
   end
 
   private
@@ -25,4 +31,11 @@ class Expense < ApplicationRecord
       errors.add(:receipt, 'size should be less than 10MB')
     end
   end
+  
+  def date_cannot_be_in_the_future
+    if date.present? && date > Date.today
+      errors.add(:date, "can't be in the future")
+    end
+   end 
+
 end

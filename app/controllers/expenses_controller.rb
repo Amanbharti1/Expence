@@ -2,38 +2,32 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_ransack
-
  
   def index
-    @expenses =  @q.result(distinct: true).page(params[:page]).per(6)
+    @expenses = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def category
-    puts "------#{params[:category]}"
    
     @expenses = @q.result.where(category_id: params[:category]).page(params[:page]).per(6)
     
      respond_to do |format|
       format.html { render :index }
-      format.html   { render partial: 'expenses' }
+      format.html { render partial: 'expenses' }
      end
     
   end
-
   
   def show
   end
 
-  
   def new
     @expense = Expense.new
   end
 
-  
   def edit
   end
 
-  
   def create
     @expense = current_user.expenses.build(expense_params)
     if @expense.save
@@ -43,7 +37,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  
   def update
     respond_to do |format|
       if @expense.update(expense_params)
@@ -56,7 +49,6 @@ class ExpensesController < ApplicationController
     end
   end
 
- 
   def destroy
     @expense.destroy!
 
@@ -68,15 +60,11 @@ class ExpensesController < ApplicationController
 
   private
     def set_ransack
-     
-      @q =  current_user.expenses.ransack(params[:q])
-
+      @q = current_user.expenses.ransack(params[:q])
     end  
 
-    def set_expense
-      
+    def set_expense      
       @expense = Expense.find(params[:id])
-      
     end
 
     

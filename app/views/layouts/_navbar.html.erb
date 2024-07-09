@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Expense</a>
+    <a class="navbar-brand" href="#"><h2>Expense</h2></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,13 +14,19 @@
 
         <li class="nav-item">
           <%= link_to "Edit Profile",
-          edit_user_registration_path,  class: "nav-link"
+          edit_user_registration_path,  class: "nav-link active"
+          %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Expense Reports",
+          reports_index_expenses_url,class: "nav-link active"
           %>
         </li>
 
         <li class="nav-item">
           <%= link_to "Admin",
-          new_admin_user_session_url ,class: "nav-link"
+          new_admin_user_session_url ,class: "nav-link active"
           %>
         </li>
         <li class="nav-item ml-5">
