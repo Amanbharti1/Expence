@@ -7,7 +7,7 @@
 <div class="row g-0">
   <div class="col-md-4">
   <% if @expense.receipt.attached? %>
-  <%= image_tag @expense.receipt,class:"img-fluid" size: "200x200" %>
+  <%= image_tag @expense.receipt, size: "200x200" %>
 <% else %>
   No receipt uploaded.
 <% end %>
