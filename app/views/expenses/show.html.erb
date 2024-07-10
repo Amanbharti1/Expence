@@ -1,13 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="container">
-<div class="row">
+<div class="row mt-5">
 <div class="col-6">
 <div class="card mb-3" style="max-width: 600px;">
 <div class="row g-0">
   <div class="col-md-4">
   <% if @expense.receipt.attached? %>
-  <%= image_tag @expense.receipt, size: "200x200" %>
+  <%= image_tag @expense.receipt,class:"img-fluid" size: "200x200" %>
 <% else %>
   No receipt uploaded.
 <% end %>
@@ -23,13 +23,12 @@
 </div>
 </div>
   
-  
-
-<div class="mb-3">
-  <%= link_to "Edit this expense", edit_expense_path(@expense) ,class:"btn btn-primary mb-3" %> 
-  <%= link_to "Back to expenses", expenses_path ,class:"btn btn-warning mb-3" %>
-
+<div class="mb-3 d-flex">
+  <%= link_to "Edit this expense", edit_expense_path(@expense) ,class:"btn btn-primary mb-3 me-2" %> 
   <%= button_to "Destroy this expense", @expense, method: :delete ,class:"btn btn-danger" %>
+<%= link_to "Back to expenses", expenses_path ,class:"btn btn-warning mb-3 ms-2" %>
+
+  
 </div>
 </div>
 <div class='col-6'>

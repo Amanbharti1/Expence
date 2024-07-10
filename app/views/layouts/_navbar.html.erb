@@ -12,11 +12,6 @@
         
         <% if user_signed_in?%>
 
-        <li class="nav-item">
-          <%= link_to "Edit Profile",
-          edit_user_registration_path,  class: "nav-link active"
-          %>
-        </li>
 
         <li class="nav-item">
           <%= link_to "Expense Reports",
@@ -53,13 +48,16 @@
        
       <%if user_signed_in?%>
       <ul class="navbar-nav ms-2">
-      <li class="nav-item">
-          <%= button_to "Sign Out",
-          destroy_user_session_path,
-          method: :delete,
-          class: "btn btn-outline-info"
-          %>
-      </li> 
+      
+      <li class="nav-item dropdown me-2">
+            <a class="nav-link active dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"      aria-expanded="false">
+              Profile
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %> </li>
+              <li><%= button_to "Sign Out", destroy_user_session_url, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
       </ul>
       <%end%>
     </div>
