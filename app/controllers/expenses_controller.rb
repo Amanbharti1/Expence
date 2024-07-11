@@ -11,7 +11,6 @@ class ExpensesController < ApplicationController
   def category
    
     @expenses = @q.result.where(category_id: params[:category]).page(params[:page]).per(6)
-    
      respond_to do |format|
       format.html { render :index }
       format.html { render partial: 'expenses' }
@@ -60,6 +59,7 @@ class ExpensesController < ApplicationController
   end
 
   private
+  
     def set_ransack
       @q = current_user.expenses.ransack(params[:q])
     end  
