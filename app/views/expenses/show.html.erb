@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <div class="container">
 <div class="row mt-5">
 <div class="col-6">
@@ -7,13 +5,13 @@
 <div class="row g-0">
   <div class="col-md-4">
   <% if @expense.receipt.attached? %>
-  <%= image_tag @expense.receipt,class:"img-fluid" size: "200x200" %>
-<% else %>
-  No receipt uploaded.
-<% end %>
+  <%= image_tag @expense.receipt, size: "200x200" %>
+  <% else %>
+    No receipt uploaded.
+  <% end %>
   </div>
   <div class="col-md-8">
-    <div class="card-body">
+    <div class="card-body">  
       <h4 class="card-title"><%=@expense.title%></h4>
       <p class="card-text"> Description : <%=@expense.description%></p>
       <p class="card-text"> $<%=@expense.amount%></p>
@@ -24,9 +22,9 @@
 </div>
   
 <div class="mb-3 d-flex">
-  <%= link_to "Edit this expense", edit_expense_path(@expense) ,class:"btn btn-primary mb-3 me-2" %> 
-  <%= button_to "Destroy this expense", @expense, method: :delete ,class:"btn btn-danger" %>
-<%= link_to "Back to expenses", expenses_path ,class:"btn btn-warning mb-3 ms-2" %>
+  <%= link_to "Edit ", edit_expense_path(@expense) ,class:"btn btn-primary mb-3 me-2" %> 
+  <%= button_to "Destroy ", @expense, method: :delete ,class:"btn btn-danger" %>
+<%= link_to "Back ", expenses_path ,class:"btn btn-warning mb-3 ms-2" %>
 
   
 </div>

@@ -74,6 +74,7 @@ gem 'sassc-rails'
 gem 'bootstrap-sass'
 gem 'active_bootstrap_skin'
 gem 'ransack'
+gem 'byebug', '~> 11.1', '>= 11.1.3'
 
 
 

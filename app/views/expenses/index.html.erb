@@ -6,10 +6,11 @@
 
 <div class="btn-group mb-5 ms-2" role="group" aria-label="Basic mixed styles example">
   <%= link_to "All", expenses_path, class: "btn btn-danger", remote: true %>
-  <%= link_to "Repairs", category_expenses_path(7), class: "btn btn-warning", remote: true %>
-  <%= link_to "Shopping", category_expenses_path(8), class: "btn btn-success", remote: true %>
-  <%= link_to "Bills", category_expenses_path(9), class: "btn btn-info", remote: true %>
-  <%= link_to "Taxes", category_expenses_path(10), class: "btn btn-primary", remote: true %>
+  <%n = 0%>
+  <% @categories.each do |category|%>
+    <%= link_to category.name, category_expenses_path(category.id), class: "btn btn-warning",remote: true %>
+   
+  <% end %>
 </div>
 
 

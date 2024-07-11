@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_ransack
+  before_action :set_categories, only: %i[index category]
  
   def index
     @expenses = @q.result(distinct: true).page(params[:page]).per(6)
@@ -70,6 +71,10 @@ class ExpensesController < ApplicationController
     
    def expense_params
       params.require(:expense).permit(:title, :amount, :description, :date, :category_id, :receipt)
+   end
+
+   def set_categories
+       @categories = Category.all
    end
 
 end

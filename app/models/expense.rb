@@ -2,7 +2,6 @@ class Expense < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_one_attached :receipt
-
   validates :title, presence: true, length: { maximum: 100 }
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 500 }, allow_blank: true
